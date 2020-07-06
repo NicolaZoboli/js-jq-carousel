@@ -6,13 +6,24 @@ $(document).ready(function() {
 
   prevButton.click(prevImg);
 
-  $(document).keydown(function() {  
+  // se uso le frecce della tastiera le immagini cambiano di conseguenza
+  $(document).keydown(function() {
     var key = event.which;
     if (key == 39 || key == 100) {
       nextImg();
     } else if (key == 37 || key == 97) {
       prevImg();
     }
+  });
+
+  // clicco su un pallino e devo far vedere la corrispondente immagine
+  // trovo indice del pallino sul quale ho cliccato e uso questo indice per trovare l'immagine corrispondente
+  $(".nav > i").click(function() {
+    $(".nav > i").removeClass("active");
+    $(this).addClass("active");
+    var thisIndex = $(this).index();
+    $("img.active").removeClass("active");
+    $("img").eq(thisIndex).addClass("active");
   });
 
 });
